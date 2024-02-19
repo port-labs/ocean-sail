@@ -1,0 +1,71 @@
+name: 'Ocean Sail command'
+description: 'Runs the Ocean Sail command for a specific type of integration'
+inputs:
+  type:
+    description: 'The type of the integration to run'
+    required: true
+  version:
+    description: 'The version of the integration to run'
+    required: false
+    default: 'latest'
+  port_client_id:
+    description: 'The port client id'
+    required: true
+  port_client_secret:
+    description: 'The port client secret'
+    required: true
+  initialize_port_resources:
+    description: 'Should ocean try to create the default blueprints, pages & integration config for the integration'
+    required: false
+    default: 'true'
+  event_listener_type:
+    description: 'The type of the event listener to use'
+    required: false
+    default: 'ONCE'
+  integration_config:
+    description: 'Changing configuration between different integration types'
+    required: false
+    default: '{}'
+  additional_env_vars:
+    description: 'Additional environment variables to pass to the integration'
+    required: false
+    default: '{}'
+
+  # Misc inputs
+  platform:
+    description: 'The platform to run the integration on'
+    required: false
+    default: 'linux/amd64'
+  container_registry:
+    description: 'The container registry to pull the image from'
+    required: false
+    default: 'ghcr.io/port-labs'
+outputs:
+  exit_code:
+    description: 'The exit code of the Ocean Sail command'
+    value: ${{ steps.ocean-sail.outputs.exit_code }}
+runs:
+  using: "composite"
+  steps:
+    - name: ocean-sail
+      run: |
+        image_name="ghcr.io/port-labs/port-ocean-${{ inputs.type }}:${{ inputs.version }}"
+        
+        echo "OCEAN__EVENT_LISTENER='{"type":"${{ inputs.event_listener_type }}"}'" >> .env
+        echo "OCEAN__INITIALIZE_PORT_RESOURCES=${{ inputs.initialize_port_resources }}" >> .env
+        echo "OCEAN__INTEGRATION__CONFIG=${{ inputs.integration_config }}" >> .env
+        echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .env
+        echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .env
+        
+        for key in ${{ inputs.additional_env_vars.keys() }}; do
+          echo "$key=${{ inputs.additional_env_vars[key] }}" >> .env
+        done
+
+        docker run -i --rm \ 
+          --platform=${{ inputs.platform }} \
+          --env-file .env \
+          $image_name
+        
+        echo "exit_code=$?" >> $GITHUB_ENV
+
+      shell: bash
