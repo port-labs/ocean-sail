@@ -61,10 +61,10 @@ runs:
         if [[ "${{ inputs.config }}" ]]; then
           inputs=$(echo ${{ inputs.config }} | yq eval -j -)
           echo $inputs
-#          for key in $(echo $inputs | jq -r "keys[]"); do
-#            value=$(echo $inputs | jq -r ".[$key]")
-#            echo "OCEAN__INTEGRATION__CONFIG__${key}=${value}" >> .env
-#          done
+        #          for key in $(echo $inputs | jq -r "keys[]"); do
+        #            value=$(echo $inputs | jq -r ".[$key]")
+        #            echo "OCEAN__INTEGRATION__CONFIG__${key}=${value}" >> .env
+        #          done
         fi
         
         env >> .env
