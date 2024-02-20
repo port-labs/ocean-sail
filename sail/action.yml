@@ -69,10 +69,7 @@ runs:
           echo "$KEY=$VALUE" >> .env
         done
 
-        docker run -i --rm \ 
-          --platform=${{ inputs.platform }} \
-          --env-file .env \
-          $image_name
+        docker run -i --rm --platform=${{ inputs.platform }} --env-file .env $image_name
         
         echo "exit_code=$?" >> $GITHUB_ENV
 
