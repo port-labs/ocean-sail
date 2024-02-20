@@ -5,6 +5,7 @@
 [![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://www.getport.io/community)
 
 Read more about the Ocean framework [here](https://ocean.getport.io/)
+All the possible Ocean integrations can be found at the [Ocean integrations library](https://ocean.getport.io/integrations-library/)
 
 # Actions
 
