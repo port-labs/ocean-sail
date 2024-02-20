@@ -8,25 +8,24 @@
 Runs the Ocean Sail command for a specific type of integration
 <!-- action-docs-description action="action.yml" -->
 
+Read more about the Ocean framework [here](https://ocean.getport.io/)
+
 <!-- action-docs-inputs action="action.yml" -->
 ## Inputs
 
 | name | description | required | default |
 | --- | --- | --- | --- |
 | `type` | <p>The type of the integration to run</p> | `true` | `""` |
-| `version` | <p>The version of the integration to run</p> | `false` | `latest` |
+| `identifier` | <p>The identifier of the integration to run</p> | `false` | `""` |
 | `port_client_id` | <p>The port client id</p> | `true` | `""` |
 | `port_client_secret` | <p>The port client secret</p> | `true` | `""` |
 | `initialize_port_resources` | <p>Should ocean try to create the default blueprints, pages &amp; integration config for the integration</p> | `false` | `true` |
 | `event_listener_type` | <p>The type of the event listener to use</p> | `false` | `ONCE` |
+| `config` | <p>The configuration for the integration</p> | `false` | `""` |
 | `platform` | <p>The platform to run the integration on</p> | `false` | `linux/amd64` |
-| `container_registry` | <p>The container registry to pull the image from</p> | `false` | `ghcr.io/port-labs` |
+| `image` | <p>The image to run the integration from</p> | `false` | `""` |
+| `version` | <p>The version of the integration to run</p> | `false` | `latest` |
 <!-- action-docs-inputs action="action.yml" -->
-
-## Integration configuration
-
-To each integration type its specific configuration please use `env:` to set the configuration as environment variables.
-Each environment variable should be prefixed with `OCEAN__INTEGRATION__CONFIG__` and the name of the variable in uppercase.
 
 <!-- action-docs-outputs action="action.yml" -->
 ## Outputs

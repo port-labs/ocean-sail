@@ -4,6 +4,8 @@
 
 [![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://community.getport.io/join-3)
 
+Read more about the Ocean framework [here](https://ocean.getport.io/)
+
 # Actions
 
 This repository contains GitHub Actions for use with the Ocean platform.
