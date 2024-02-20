@@ -1,6 +1,6 @@
 <img align="right" width="100" height="74" src="https://user-images.githubusercontent.com/8277210/183290025-d7b24277-dfb4-4ce1-bece-7fe0ecd5efd4.svg" />
 
-# Ocean GitHub Action - by Port.io
+# Ocean GitHub Action - by getPort.io
 
 [![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://www.getport.io/community)
 
