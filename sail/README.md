@@ -36,7 +36,7 @@ Read more about the Ocean framework [here](https://ocean.getport.io/)
 
 ## Available integration types
 
-All available integration types are listed in the [Ocean documentation](https://ocean.getport.io/integrations-library/) and also can be found when trying to add a new Datasource in the Port UI.
+All available integration types are listed in the [Ocean integrations library](https://ocean.getport.io/integrations-library/) and can also be found in the data sources menu in the Port UI.
 
 ## Example usage
 
