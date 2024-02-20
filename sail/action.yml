@@ -51,7 +51,7 @@ runs:
       run: |
         image_name="ghcr.io/port-labs/port-ocean-${{ inputs.type }}:${{ inputs.version }}"
         
-        echo "OCEAN__EVENT_LISTENER='{"type":"${{ inputs.event_listener_type }}"}'" >> .env
+        echo "OCEAN__EVENT_LISTENER=\"{\"type":"${{ inputs.event_listener_type }}\"}\"" >> .env
         echo "OCEAN__INITIALIZE_PORT_RESOURCES=${{ inputs.initialize_port_resources }}" >> .env
         echo "OCEAN__INTEGRATION__CONFIG=${{ inputs.integration_config }}" >> .env
         echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .env
