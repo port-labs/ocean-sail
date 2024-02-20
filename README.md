@@ -2,7 +2,7 @@
 
 # Ocean GitHub Action - by Port.io
 
-[![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://community.getport.io/join-3)
+[![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://www.getport.io/community)
 
 Read more about the Ocean framework [here](https://ocean.getport.io/)
 
