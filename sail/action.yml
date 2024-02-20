@@ -43,9 +43,9 @@ runs:
       shell: bash
       run: |
         - run: |
-        [[ "${{ inputs.type }}" ]] || { echo "type input is empty" ; exit 1; }
-        [[ "${{ inputs.port_client_id }}" ]] || { echo "inputs.port_client_id input is empty" ; exit 1; }
-        [[ "${{ inputs.port_client_secret }}" ]] || { echo "inputs.port_client_secret input is empty" ; exit 1; }
+        [[ -z "${{ inputs.type }}" ]] || { echo "type input is empty" ; exit 1; }
+        [[ -z "${{ inputs.port_client_id }}" ]] || { echo "inputs.port_client_id input is empty" ; exit 1; }
+        [[ -z "${{ inputs.port_client_secret }}" ]] || { echo "inputs.port_client_secret input is empty" ; exit 1; }
 
     - name: ocean-sail
       run: |
