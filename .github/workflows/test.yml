@@ -7,6 +7,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: ./
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: ./sail
         with:
-        # input params if you have any
+          type: 'jira'
+          port_client_id: ${{ secrets.PORT_CLIENT_ID }}
+          port_client_secret: ${{ secrets.PORT_CLIENT_SECRET }}
+          config: |
+            jira_host: ${{ secrets.JIRA_HOST }}
+            atlassian_user_email: ${{ secrets.JIRA_USER_EMAIL }}
+            atlassian_user_token: ${{ secrets.JIRA_USER_TOKEN }}
