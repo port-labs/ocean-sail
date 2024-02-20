@@ -61,9 +61,8 @@ runs:
         if [[ "${{ inputs.config }}" ]]; then
           for key in $(echo "${{ inputs.config }}" | yq eval "keys | .[]"); do
             value=$(echo "${{ inputs.config }}" | yq eval ".$key")
-            echo "key=$key"
-            echo "value=$value"
-            echo "OCEAN__INTEGRATION__CONFIG__${key}=${value}" >> .env
+            upper_key=$(echo $key | tr '[:lower:]' '[:upper:]')
+            echo "OCEAN__INTEGRATION__CONFIG__${upper_key}=${value}" >> .env
           done
         fi
         
