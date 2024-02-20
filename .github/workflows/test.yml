@@ -16,6 +16,6 @@ jobs:
           port_client_id: 'port_client_id'
           port_client_secret: 'port_client_secret'
           config: |
-            jira_host:'https://jira.com'
-            atlassian_user_email:'jira_username'
-            atlassian_user_token:'jira_password'
+            jira_host: https://jira.com
+            atlassian_user_email: jira_username
+            atlassian_user_token: jira_password
