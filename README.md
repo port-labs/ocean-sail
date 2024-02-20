@@ -8,7 +8,7 @@ Read more about the Ocean framework [here](https://ocean.getport.io/)
 
 # Actions
 
-This repository contains GitHub Actions for use with the Ocean platform.
+This repository contains GitHub Actions for use with the Ocean framework.
 
 | Action                   | Description                                                    |
 |--------------------------|----------------------------------------------------------------|
