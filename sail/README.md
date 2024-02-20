@@ -8,6 +8,8 @@
 Runs the Ocean Sail command for a specific type of integration
 <!-- action-docs-description action="action.yml" -->
 
+The `sail` command is part of the Ocean framework and is used to run integrations.
+
 Read more about the Ocean framework [here](https://ocean.getport.io/)
 
 <!-- action-docs-inputs action="action.yml" -->

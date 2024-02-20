@@ -84,5 +84,6 @@ runs:
         echo "exit_code=$?" >> $GITHUB_ENV
 
     - name: 🧹 Cleanup
+      if: always()
       shell: bash
       run: rm .env
