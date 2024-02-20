@@ -4,10 +4,9 @@ inputs:
   type:
     description: 'The type of the integration to run'
     required: true
-  version:
-    description: 'The version of the integration to run'
+  identifier:
+    description: 'The identifier of the integration to run'
     required: false
-    default: 'latest'
   port_client_id:
     description: 'The port client id'
     required: true
@@ -31,10 +30,13 @@ inputs:
     description: 'The platform to run the integration on'
     required: false
     default: 'linux/amd64'
-  container_registry:
-    description: 'The container registry to pull the image from'
+  image:
+    description: 'The image to run the integration from'
     required: false
-    default: 'ghcr.io/port-labs'
+  version:
+    description: 'The version of the integration to run'
+    required: false
+    default: 'latest'
 outputs:
   exit_code:
     description: 'The exit code of the Ocean Sail command'
@@ -48,15 +50,28 @@ runs:
         [[ "${{ inputs.type }}" ]] || { echo "type input is empty" ; exit 1; }
         [[ "${{ inputs.port_client_id }}" ]] || { echo "inputs.port_client_id input is empty" ; exit 1; }
         [[ "${{ inputs.port_client_secret }}" ]] || { echo "inputs.port_client_secret input is empty" ; exit 1; }
+        [[ "${{ inputs.initialize_port_resources }}" ]] || { echo "inputs.initialize_port_resources input is empty" ; exit 1; }
+        [[ "${{ inputs.event_listener_type }}" ]] || { echo "inputs.event_listener_type input is empty" ; exit 1; }
+        [[ "${{ inputs.platform }}" ]] || { echo "inputs.platform input is empty" ; exit 1; }
+        [[ "${{ inputs.version }}" ]] || { echo "inputs.version input is empty" ; exit 1; }
 
     - name: ocean-sail
+      shell: bash
       run: |
         image_name="ghcr.io/port-labs/port-ocean-${{ inputs.type }}:${{ inputs.version }}"
+        if [[ "${{ inputs.image }}" ]]; then
+          image_name="${{ inputs.image }}:${{ inputs.version }}"
+        fi
+        
+        echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .env
+        echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .env
         
         echo "OCEAN__EVENT_LISTENER={\"type\":\"${{ inputs.event_listener_type }}\"}" >> .env
         echo "OCEAN__INITIALIZE_PORT_RESOURCES=${{ inputs.initialize_port_resources }}" >> .env
-        echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .env
-        echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .env
+        
+        if [[ "${{ inputs.identifier }}" ]]; then
+          echo "OCEAN__INTEGRATION__IDENTIFIER=${{ inputs.identifier }}" >> .env
+        fi
         
         if [[ "${{ inputs.config }}" ]]; then
           for key in $(echo "${{ inputs.config }}" | yq eval "keys | .[]"); do
@@ -67,15 +82,11 @@ runs:
         fi
         
         env >> .env
-        cat .env
         
         docker run -i --rm --platform=${{ inputs.platform }} --env-file .env $image_name
         
         echo "exit_code=$?" >> $GITHUB_ENV
 
-      shell: bash
-
     - name: cleanup
       shell: bash
-      run: |
-        rm .env
+      run: rm .env
