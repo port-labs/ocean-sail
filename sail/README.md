@@ -20,7 +20,6 @@ Read more about the Ocean framework [here](https://ocean.getport.io/)
 | `port_client_id` | <p>The port client id</p> | `true` | `""` |
 | `port_client_secret` | <p>The port client secret</p> | `true` | `""` |
 | `initialize_port_resources` | <p>Should ocean try to create the default blueprints, pages &amp; integration config for the integration</p> | `false` | `true` |
-| `event_listener_type` | <p>The type of the event listener to use</p> | `false` | `ONCE` |
 | `config` | <p>The configuration for the integration</p> | `false` | `""` |
 | `platform` | <p>The platform to run the integration on</p> | `false` | `linux/amd64` |
 | `image` | <p>The image to run the integration from</p> | `false` | `""` |

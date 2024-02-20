@@ -17,10 +17,6 @@ inputs:
     description: 'Should ocean try to create the default blueprints, pages & integration config for the integration'
     required: false
     default: 'true'
-  event_listener_type:
-    description: 'The type of the event listener to use'
-    required: false
-    default: 'ONCE'
   config:
     description: 'The configuration for the integration'
     required: false
@@ -66,7 +62,7 @@ runs:
         echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .env
         echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .env
         
-        echo "OCEAN__EVENT_LISTENER={\"type\":\"${{ inputs.event_listener_type }}\"}" >> .env
+        echo "OCEAN__EVENT_LISTENER={\"type\":\"ONCE\"}" >> .env
         echo "OCEAN__INITIALIZE_PORT_RESOURCES=${{ inputs.initialize_port_resources }}" >> .env
         
         if [[ "${{ inputs.identifier }}" ]]; then
