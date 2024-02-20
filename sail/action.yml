@@ -66,6 +66,7 @@ runs:
         fi
         
         env >> .env
+        cat .env
         
         docker run -i --rm --platform=${{ inputs.platform }} --env-file .env $image_name
         
