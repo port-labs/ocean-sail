@@ -22,6 +22,9 @@ inputs:
     description: 'The type of the event listener to use'
     required: false
     default: 'ONCE'
+  config:
+    description: 'The configuration for the integration'
+    required: false
 
   # Misc inputs
   platform:
@@ -55,10 +58,16 @@ runs:
         echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .env
         echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .env
         
+        if [[ "${{ inputs.config }}" ]]; then
+          inputs=$(echo ${{ inputs.config }} | yq eval -j -)
+          for key in $(echo $inputs | jq -r "keys[]"); do
+            value=$(echo $inputs | jq -r ".[$key]")
+            echo "OCEAN__INTEGRATION__CONFIG__${key}=${value}" >> .env
+          done
+        fi
+        
         env >> .env
         
-        cat .env
-
         docker run -i --rm --platform=${{ inputs.platform }} --env-file .env $image_name
         
         echo "exit_code=$?" >> $GITHUB_ENV
