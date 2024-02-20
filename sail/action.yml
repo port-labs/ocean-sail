@@ -68,9 +68,16 @@ runs:
           VALUE=$(echo $ENV_VARS_JSON | jq -r ".$KEY")
           echo "$KEY=$VALUE" >> .env
         done
+        
+        ca .env
 
         docker run -i --rm --platform=${{ inputs.platform }} --env-file .env $image_name
         
         echo "exit_code=$?" >> $GITHUB_ENV
 
       shell: bash
+
+    - name: cleanup
+      shell: bash
+      run: |
+        rm .env
