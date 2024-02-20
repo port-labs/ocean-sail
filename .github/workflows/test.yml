@@ -12,4 +12,5 @@ jobs:
       - uses: ./sail
         with:
           type: 'jira'
+          integration_config: '{"jira_host":"https://jira.com","atlassian_user_email":"jira_username","atlassian_user_token":"jira_password"}'
         # input params if you have any
