@@ -57,8 +57,16 @@ runs:
         echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .env
         echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .env
         
-        for key in ${{ inputs.additional_env_vars.keys() }}; do
-          echo "$key=${{ inputs.additional_env_vars[key] }}" >> .env
+        # Assuming additional_env_vars is a JSON object
+        ENV_VARS_JSON="${{ inputs.additional_env_vars }}"
+        
+        # Convert JSON to a Bash array
+        ENV_VARS_ARRAY=($(echo $ENV_VARS_JSON | jq -r 'keys_unsorted[]'))
+
+        # Iterate over the keys
+        for KEY in "${ENV_VARS_ARRAY[@]}"; do
+          VALUE=$(echo $ENV_VARS_JSON | jq -r ".$KEY")
+          echo "$KEY=$VALUE" >> .env
         done
 
         docker run -i --rm \ 
