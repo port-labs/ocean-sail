@@ -35,11 +35,9 @@ Read more about the Ocean framework [here](https://ocean.getport.io/)
 | `exit_code` | <p>The exit code of the Ocean Sail command</p> |
 <!-- action-docs-outputs action="action.yml" -->
 
-<!-- action-docs-runs action="action.yml" -->
-## Runs
+## Available integration types
 
-This action is a `composite` action.
-<!-- action-docs-runs action="action.yml" -->
+All available integration types are listed in the [Ocean documentation](https://ocean.getport.io/integrations-library/) and also can be found when trying to add a new Datasource in the Port UI.
 
 ## Example usage
 
