@@ -59,6 +59,8 @@ runs:
         echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .env
         
         if [[ "${{ inputs.config }}" ]]; then
+          echo "${{ inputs.config }}" > test.yml
+          cat test.yml
           inputs=$(echo ${{ inputs.config }} | yq eval -j -)
           echo $inputs
         #          for key in $(echo $inputs | jq -r "keys[]"); do
