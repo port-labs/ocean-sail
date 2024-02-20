@@ -1,4 +1,4 @@
-name: 'Ocean Sail command'
+name: '🌊 Ocean Sail'
 description: 'Runs the Ocean Sail command for a specific type of integration'
 inputs:
   type:
@@ -8,10 +8,10 @@ inputs:
     description: 'The identifier of the integration to run'
     required: false
   port_client_id:
-    description: 'The port client id'
+    description: 'The Port client id'
     required: true
   port_client_secret:
-    description: 'The port client secret'
+    description: 'The Port client secret'
     required: true
   initialize_port_resources:
     description: 'Should ocean try to create the default blueprints, pages & integration config for the integration'
@@ -40,7 +40,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: validate inputs
+    - name: ✅ Validate inputs
       shell: bash
       run: |
         [[ "${{ inputs.type }}" ]] || { echo "type input is empty" ; exit 1; }
@@ -51,7 +51,7 @@ runs:
         [[ "${{ inputs.platform }}" ]] || { echo "inputs.platform input is empty" ; exit 1; }
         [[ "${{ inputs.version }}" ]] || { echo "inputs.version input is empty" ; exit 1; }
 
-    - name: ocean-sail
+    - name: 🌊 Run Ocean Sail dockerized
       shell: bash
       run: |
         image_name="ghcr.io/port-labs/port-ocean-${{ inputs.type }}:${{ inputs.version }}"
@@ -83,6 +83,6 @@ runs:
         
         echo "exit_code=$?" >> $GITHUB_ENV
 
-    - name: cleanup
+    - name: 🧹 Cleanup
       shell: bash
       run: rm .env
