@@ -9,8 +9,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - uses: ./sail
         with:
           type: 'jira'
-          integration_config: '{"jira_host":"https://jira.com","atlassian_user_email":"jira_username","atlassian_user_token":"jira_password"}'
+        env:
+          OCEAN__INTEGRATION__CONFIG__JIRA__HOST: 'https://jira.com'
+          OCEAN__INTEGRATION__CONFIG__JIRA__ATLASSIAN_USER_EMAIL: 'jira_username'
+          OCEAN__INTEGRATION__CONFIG__JIRA__ATLASSIAN_USER_TOKEN: 'jira_password'
         # input params if you have any
