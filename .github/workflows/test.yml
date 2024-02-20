@@ -9,4 +9,5 @@ jobs:
     steps:
       - uses: ./sail
         with:
+          type: 'jira'
         # input params if you have any
