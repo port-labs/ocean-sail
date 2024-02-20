@@ -15,7 +15,7 @@ jobs:
           type: 'jira'
           port_client_id: 'port_client_id'
           port_client_secret: 'port_client_secret'
-        env:
-          OCEAN__INTEGRATION__CONFIG__JIRA_HOST: 'https://jira.com'
-          OCEAN__INTEGRATION__CONFIG__ATLASSIAN_USER_EMAIL: 'jira_username'
-          OCEAN__INTEGRATION__CONFIG__ATLASSIAN_USER_TOKEN: 'jira_password'
+          config: |
+            jira_host:'https://jira.com'
+            atlassian_user_email:'jira_username'
+            atlassian_user_token:'jira_password'
