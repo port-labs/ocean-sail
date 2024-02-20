@@ -13,8 +13,9 @@ jobs:
       - uses: ./sail
         with:
           type: 'jira'
+#          port_client_id: 'port_client_id'
+#          port_client_secret: 'port_client_secret'
         env:
           OCEAN__INTEGRATION__CONFIG__JIRA__HOST: 'https://jira.com'
           OCEAN__INTEGRATION__CONFIG__JIRA__ATLASSIAN_USER_EMAIL: 'jira_username'
           OCEAN__INTEGRATION__CONFIG__JIRA__ATLASSIAN_USER_TOKEN: 'jira_password'
-        # input params if you have any

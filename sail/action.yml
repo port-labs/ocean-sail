@@ -39,11 +39,24 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: validate inputs
+      shell: bash
+      run: |
+        - run: |
+        [[ "${{ inputs.type }}" ]] || { echo "type input is empty" ; exit 1; }
+        [[ "${{ inputs.port_client_id }}" ]] || { echo "inputs.port_client_id input is empty" ; exit 1; }
+        [[ "${{ inputs.port_client_secret }}" ]] || { echo "inputs.port_client_secret input is empty" ; exit 1; }
+
     - name: ocean-sail
       run: |
         image_name="ghcr.io/port-labs/port-ocean-${{ inputs.type }}:${{ inputs.version }}"
         
-        env > .env
+        echo "OCEAN__EVENT_LISTENER={\"type\":\"${{ inputs.event_listener_type }}\"}" >> .env
+        echo "OCEAN__INITIALIZE_PORT_RESOURCES=${{ inputs.initialize_port_resources }}" >> .env
+        echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .env
+        echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .env
+        
+        env >> .env
         
         cat .env
 
