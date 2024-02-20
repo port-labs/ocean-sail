@@ -69,7 +69,7 @@ runs:
           echo "$KEY=$VALUE" >> .env
         done
         
-        ca .env
+        cat .env
 
         docker run -i --rm --platform=${{ inputs.platform }} --env-file .env $image_name
         
