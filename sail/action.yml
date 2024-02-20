@@ -58,10 +58,11 @@ runs:
         echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .env
         echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .env
         
-        echo "${{ inputs.config }}" | yq eval "keys"
         if [[ "${{ inputs.config }}" ]]; then
           for key in $(echo "${{ inputs.config }}" | yq eval "keys"); do
             value=$(echo "${{ inputs.config }}" | yq eval ".$key")
+            echo "key=$key"
+            echo "value=$value"
             echo "OCEAN__INTEGRATION__CONFIG__${key}=${value}" >> .env
           done
         fi
