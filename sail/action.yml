@@ -51,11 +51,15 @@ runs:
       run: |
         image_name="ghcr.io/port-labs/port-ocean-${{ inputs.type }}:${{ inputs.version }}"
         
-        echo "OCEAN__EVENT_LISTENER=\"{\"type\":\"${{ inputs.event_listener_type }}\"}\"" >> .env
+        echo "OCEAN__EVENT_LISTENER={\"type\":\"${{ inputs.event_listener_type }}\"}" >> .env
         echo "OCEAN__INITIALIZE_PORT_RESOURCES=${{ inputs.initialize_port_resources }}" >> .env
-        echo "OCEAN__INTEGRATION__CONFIG=${{ inputs.integration_config }}" >> .env
         echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .env
         echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .env
+        
+        INTEGRATION_CONFIG=$(echo ${{ inputs.integration_config }} | jq -r 'to_entries[] | "OCEAN__INTEGRATION__CONFIG__\(.key)=\(.value)"'')
+        for CONFIG in $INTEGRATION_CONFIG; do
+            echo $CONFIG >> .env
+        done
         
         # Assuming additional_env_vars is a JSON object
         ENV_VARS_JSON="${{ inputs.additional_env_vars }}"
