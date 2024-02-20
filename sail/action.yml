@@ -56,7 +56,7 @@ runs:
         echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .env
         echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .env
         
-        INTEGRATION_CONFIG=$(echo ${{ inputs.integration_config }} | jq -r 'to_entries[] | "OCEAN__INTEGRATION__CONFIG__\(.key)=\(.value)"'')
+        INTEGRATION_CONFIG=$(echo ${{ inputs.integration_config }} | jq -r 'to_entries[] | "OCEAN__INTEGRATION__CONFIG__\(.key)=\(.value)"')
         for CONFIG in $INTEGRATION_CONFIG; do
             echo $CONFIG >> .env
         done
