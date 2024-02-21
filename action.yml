@@ -50,7 +50,6 @@ runs:
         [[ "${{ inputs.port_client_id }}" ]] || { echo "inputs.port_client_id input is empty" ; exit 1; }
         [[ "${{ inputs.port_client_secret }}" ]] || { echo "inputs.port_client_secret input is empty" ; exit 1; }
         [[ "${{ inputs.initialize_port_resources }}" ]] || { echo "inputs.initialize_port_resources input is empty" ; exit 1; }
-        [[ "${{ inputs.event_listener_type }}" ]] || { echo "inputs.event_listener_type input is empty" ; exit 1; }
         [[ "${{ inputs.platform }}" ]] || { echo "inputs.platform input is empty" ; exit 1; }
         [[ "${{ inputs.version }}" ]] || { echo "inputs.version input is empty" ; exit 1; }
 
