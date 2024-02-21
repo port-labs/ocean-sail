@@ -59,31 +59,31 @@ runs:
           image_name="${{ inputs.image }}:${{ inputs.version }}"
         fi
         
-        echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .env
-        echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .env
+        echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .sail-env
+        echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .sail-env
         
-        echo "OCEAN__EVENT_LISTENER={\"type\":\"ONCE\"}" >> .env
-        echo "OCEAN__INITIALIZE_PORT_RESOURCES=${{ inputs.initialize_port_resources }}" >> .env
+        echo "OCEAN__EVENT_LISTENER={\"type\":\"ONCE\"}" >> .sail-env
+        echo "OCEAN__INITIALIZE_PORT_RESOURCES=${{ inputs.initialize_port_resources }}" >> .sail-env
         
         if [[ "${{ inputs.identifier }}" ]]; then
-          echo "OCEAN__INTEGRATION__IDENTIFIER=${{ inputs.identifier }}" >> .env
+          echo "OCEAN__INTEGRATION__IDENTIFIER=${{ inputs.identifier }}" >> .sail-env
         fi
         
         if [[ "${{ inputs.config }}" ]]; then
           for key in $(echo "${{ inputs.config }}" | yq eval "keys | .[]"); do
             value=$(echo "${{ inputs.config }}" | yq eval ".$key")
             upper_key=$(echo $key | tr '[:lower:]' '[:upper:]')
-            echo "OCEAN__INTEGRATION__CONFIG__${upper_key}=${value}" >> .env
+            echo "OCEAN__INTEGRATION__CONFIG__${upper_key}=${value}" >> .sail-env
           done
         fi
         
-        env >> .env
+        env >> .sail-env
         
-        docker run -i --rm --platform=${{ inputs.platform }} --env-file .env $image_name
+        docker run -i --rm --platform=${{ inputs.platform }} --env-file .sail-env $image_name
         
         echo "exit_code=$?" >> $GITHUB_ENV
 
     - name: 🧹 Cleanup
       if: always()
       shell: bash
-      run: rm .env
+      run: rm .sail-env
