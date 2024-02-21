@@ -49,7 +49,7 @@ All available integration types are listed in the [Ocean integrations library](h
 ## Example usage
 
 ```yaml
-- uses: ocean-github-action/sail@v1
+- uses: port-labs/ocean-sail@v1
   with:
     type: 'jira'
     port_client_id: ${{ secrets.PORT_CLIENT_ID }}
