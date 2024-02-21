@@ -1,6 +1,7 @@
 name: '🌊 Ocean Sail'
-icon: 'anchor'
-color: 'blue'
+branding:
+  icon: 'anchor'
+  color: 'blue'
 description: 'Runs the Ocean Sail command for a specific type of integration'
 inputs:
   type:
