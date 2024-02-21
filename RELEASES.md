@@ -1,5 +1,5 @@
 # Releases
 
 ### 1.0.0
-- Initial release
+- Initial release of the ocean sail action
 

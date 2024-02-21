@@ -1,10 +1,13 @@
 {
   "name": "ocean-github-action",
   "version": "1.0.0",
-  "repository": "git@github.com:port-labs/ocean-github-action.git",
+  "repository": "git@github.com:port-labs/ocean-sail.git",
   "author": "yair <yairsimantov20@gmail.com>",
   "license": "Apache-2.0",
   "dependencies": {
     "action-docs": "^2.1.0"
   },
+  "scripts": {
+    "ghadocs": "action-docs -u"
+  }
 }

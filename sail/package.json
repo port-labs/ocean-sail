@@ -1,9 +1,0 @@
-{
-  "name": "ocean-github-action-sail",
-  "version": "1.0.0",
-  "repository": "git@github.com:port-labs/ocean-github-action.git",
-  "author": "yair <yairsimantov20@gmail.com>",
-  "scripts": {
-    "ghadocs": "action-docs -u"
-  }
-}
