@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - uses: ./sail
+      - uses: .
         with:
           type: 'jira'
           port_client_id: ${{ secrets.PORT_CLIENT_ID }}

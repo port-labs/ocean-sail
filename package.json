@@ -7,4 +7,7 @@
   "dependencies": {
     "action-docs": "^2.1.0"
   },
+  "scripts": {
+    "ghadocs": "action-docs -u"
+  }
 }
