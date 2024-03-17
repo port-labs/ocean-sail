@@ -2,7 +2,7 @@
 
 <!-- action-docs-header action="action.yml" -->
 
-<img align="right" width="100" height="74" src="https://user-images.githubusercontent.com/8277210/183290025-d7b24277-dfb4-4ce1-bece-7fe0ecd5efd4.svg" />
+<img align="right" width="100" height="74" src="https://port-graphical-assets.s3.eu-west-1.amazonaws.com/Logo+Typo+%2B+Logo+Symbol.svg" />
 
 # Ocean Sail GitHub Action - by getPort.io
 
