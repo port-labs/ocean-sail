@@ -16,6 +16,9 @@ inputs:
   port_client_secret:
     description: 'The Port client secret'
     required: true
+  port_base_url:
+    description: 'The Port base URL'
+    required: false
   initialize_port_resources:
     description: 'Should Ocean try to create the default resources (blueprints, pages, integration config, etc.) provided with the integration'
     required: false
@@ -41,7 +44,7 @@ outputs:
     description: 'The exit code of the Ocean Sail command'
     value: ${{ steps.ocean-sail.outputs.exit_code }}
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: ✅ Validate inputs
       shell: bash
@@ -60,17 +63,18 @@ runs:
         if [[ "${{ inputs.image }}" ]]; then
           image_name="${{ inputs.image }}:${{ inputs.version }}"
         fi
-        
+
         echo "OCEAN__PORT__CLIENT_ID=${{ inputs.port_client_id }}" >> .sail-env
         echo "OCEAN__PORT__CLIENT_SECRET=${{ inputs.port_client_secret }}" >> .sail-env
-        
+        echo "OCEAN__PORT__BASE_URL=${{ inputs.port_base_url }}" >> .sail-env
+
         echo "OCEAN__EVENT_LISTENER={\"type\":\"ONCE\"}" >> .sail-env
         echo "OCEAN__INITIALIZE_PORT_RESOURCES=${{ inputs.initialize_port_resources }}" >> .sail-env
-        
+
         if [[ "${{ inputs.identifier }}" ]]; then
           echo "OCEAN__INTEGRATION__IDENTIFIER=${{ inputs.identifier }}" >> .sail-env
         fi
-        
+
         if [[ "${{ inputs.config }}" ]]; then
           for key in $(echo "${{ inputs.config }}" | yq eval "keys | .[]"); do
             value=$(echo "${{ inputs.config }}" | yq eval ".$key")
@@ -78,11 +82,11 @@ runs:
             echo "OCEAN__INTEGRATION__CONFIG__${upper_key}=${value}" >> .sail-env
           done
         fi
-        
+
         env >> .sail-env
-        
+
         docker run -i --rm --platform=${{ inputs.platform }} --env-file .sail-env $image_name
-        
+
         echo "exit_code=$?" >> $GITHUB_ENV
 
     - name: 🧹 Cleanup
