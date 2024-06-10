@@ -18,6 +18,7 @@ inputs:
     required: true
   port_base_url:
     description: 'The Port base URL'
+    default: 'https://api.getport.io'
     required: false
   initialize_port_resources:
     description: 'Should Ocean try to create the default resources (blueprints, pages, integration config, etc.) provided with the integration'
