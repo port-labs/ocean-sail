@@ -4,19 +4,19 @@
 
 <img align="right" width="100" height="74" src="https://port-graphical-assets.s3.eu-west-1.amazonaws.com/Logo+Typo+%2B+Logo+Symbol.svg" />
 
-# Ocean Sail GitHub Action - by getPort.io
+# Port Ocean Sail GitHub Action
 
-[![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://www.getport.io/community)
+[![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://www.port.io/community)
 
 <!-- action-docs-description action="action.yml" -->
 ## Description
 
-Runs the Ocean Sail command for a specific type of integration
+Runs the Ocean Sail as part of a GitHub workflow. 
 <!-- action-docs-description action="action.yml" -->
 
-The `sail` command is part of the Ocean framework and is used to run integrations.
+The `sail` command is part of the Ocean framework and is used to run and synchronize Port integrations you select.
 
-Read more about the Ocean framework [here](https://ocean.getport.io/)
+Read more about the Ocean framework [here](https://ocean.port.io/)
 
 <!-- action-docs-inputs action="action.yml" -->
 ## Inputs
@@ -44,7 +44,7 @@ Read more about the Ocean framework [here](https://ocean.getport.io/)
 
 ## Available integration types
 
-All available integration types are listed in the [Ocean integrations library](https://ocean.getport.io/integrations-library/) and can also be found in the data sources menu in the Port UI.
+All available integration types are listed in the [Ocean integrations library](https://ocean.port.io/integrations-library/) and can also be found in the data sources menu in the Port UI.
 
 ## Example usage
 
