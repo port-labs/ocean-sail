@@ -2,7 +2,7 @@ name: '🌊 Ocean Sail'
 branding:
   icon: 'anchor'
   color: 'blue'
-description: 'Runs the Ocean Sail command for a specific type of integration'
+description: 'Initiates a Port Ocean integration sync in a GitHub workflow'
 inputs:
   type:
     description: 'The type of the integration to run'
