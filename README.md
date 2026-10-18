@@ -4,9 +4,9 @@
 
 <img align="right" width="100" height="74" src="https://port-graphical-assets.s3.eu-west-1.amazonaws.com/Logo+Typo+%2B+Logo+Symbol.svg" />
 
-# Ocean Sail GitHub Action - by getPort.io
+# Ocean Sail GitHub Action
 
-[![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://www.getport.io/community)
+[![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://www.port.io/community)
 
 <!-- action-docs-description action="action.yml" -->
 ## Description
@@ -16,7 +16,7 @@ Runs the Ocean Sail command for a specific type of integration
 
 The `sail` command is part of the Ocean framework and is used to run integrations.
 
-Read more about the Ocean framework [here](https://ocean.getport.io/)
+Read more about the Ocean framework [here](https://ocean.port.io/)
 
 <!-- action-docs-inputs action="action.yml" -->
 ## Inputs
@@ -27,7 +27,8 @@ Read more about the Ocean framework [here](https://ocean.getport.io/)
 | `identifier` | <p>The identifier of the integration to run</p> | `false` | `""` |
 | `port_client_id` | <p>The Port client id</p> | `true` | `""` |
 | `port_client_secret` | <p>The Port client secret</p> | `true` | `""` |
-| `initialize_port_resources` | <p>Should ocean try to create the default blueprints, pages &amp; integration config for the integration</p> | `false` | `true` |
+| `port_base_url` | <p>The Port base URL</p> | `false` | `https://api.port.io` |
+| `initialize_port_resources` | <p>Should Ocean try to create the default resources (blueprints, pages, integration config, etc.) provided with the integration</p> | `false` | `true` |
 | `config` | <p>The configuration for the integration</p> | `false` | `""` |
 | `platform` | <p>The platform to run the integration on</p> | `false` | `linux/amd64` |
 | `image` | <p>The image to run the integration from</p> | `false` | `""` |
@@ -44,7 +45,7 @@ Read more about the Ocean framework [here](https://ocean.getport.io/)
 
 ## Available integration types
 
-All available integration types are listed in the [Ocean integrations library](https://ocean.getport.io/integrations-library/) and can also be found in the data sources menu in the Port UI.
+All available integration types are listed in the [Ocean integrations library](https://ocean.port.io/integrations-library/) and can also be found in the data sources menu in the Port UI.
 
 ## Example usage
 
